@@ -1,9 +1,11 @@
 ;;; discover-my-major.el --- Discover key bindings and their meaning for the current Emacs major mode
 
-;; Copyright (C) 2018, Steckerhalter
+;; Copyright (C) 2026, Steckerhalter
 
 ;; Author: steckerhalter
+;; Package-Origin: (discover-my-major :url "https://framagit.org/steckerhalter/discover-my-major")
 ;; Package-Requires: ((makey "0.2"))
+;; Package-Requires-Origins: ((makey :url "https://github.com/mickeynp/makey"))
 ;; URL: https://framagit.org/steckerhalter/discover-my-major
 ;; Keywords: discover help major-mode keys
 
