@@ -2,15 +2,13 @@
 
 Discover key bindings and descriptions for commands defined by a buffer's major and minor modes.
 
-**CURRENTLY THE MODE IS NOT WORKING, I NEED TO FIX IT**
-
 The command is inspired by [discover.el](https://github.com/mickeynp/discover.el) and also uses the [makey library](https://github.com/mickeynp/makey). I thought, "Hey! Why not parse the information about the major mode bindings somehow and display that like `discover.el` does..."
 
 The output is pretty bare bones and not optimized but it seems to work already quite well for most modes:
 
-![package-menu-mode screenshot](https://framagit.org/steckerhalter/discover-my-major/raw/master/package-menu-mode.png)
+![package-menu-mode screenshot](https://github.com/steckerhalter/discover-my-major/raw/refs/heads/master/package-menu-mode.png)
 
-![git-commit-mode screenshot](https://framagit.org/steckerhalter/discover-my-major/raw/master/git-commit-mode.png)
+![git-commit-mode screenshot](https://github.com/steckerhalter/discover-my-major/raw/refs/heads/master/git-commit-mode.png)
 
 ## Installation
 
