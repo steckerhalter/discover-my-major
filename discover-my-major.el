@@ -3,7 +3,7 @@
 ;; Copyright (C) 2026, Steckerhalter
 
 ;; Author: steckerhalter
-;; Version: 1.1
+;; Version: 1.2
 ;; Package-Origin: (discover-my-major :url "https://github.com/steckerhalter/discover-my-major")
 ;; Package-Requires: ((makey "0.2"))
 ;; Package-Requires-Origins: ((makey :url "https://github.com/mickeynp/makey"))
@@ -43,6 +43,7 @@ If BUFFER is not specified then use the current buffer."
 If BUFFER is not specified then use the current buffer."
   (delq nil (mapcar 'dmm/format-binding (dmm/mode-bindings mode buffer))))
 
+
 (defun dmm/mode-bindings (mode &optional buffer)
   "Return a list with the bindings of MODE in BUFFER.
 If BUFFER is not specified then use the current buffer."
@@ -50,8 +51,10 @@ If BUFFER is not specified then use the current buffer."
          (mode-name (if (symbolp mode)
                         (symbol-name mode)
                       mode))
-         (mode-string (dmm/mode-string mode-name)))
-    (cdr (assoc mode-string (dmm/descbinds-all-sections (current-buffer))))))
+         (mode-regexp (dmm/mode-regexp mode-name)))
+    (cdr (seq-find (lambda (section)
+                     (string-match-p mode-regexp (car section)))
+                   (dmm/descbinds-all-sections buffer)))))
 
 (defun dmm/major-mode-bindings (&optional buffer)
   "Return a list with the bindings of BUFFER.
@@ -59,17 +62,16 @@ If BUFFER is not specified then use the current buffer."
   (let ((buffer (or buffer (current-buffer))))
     (dmm/mode-bindings major-mode)))
 
-(defun dmm/mode-string (mode)
+(defun dmm/mode-regexp (mode)
   "Return the string describing MODE.
 This string is at the start of the section describing MODE in the
 output of `describe-buffer-bindings'."
   (let* ((mode-name (if (symbolp mode)
                         (symbol-name mode)
-                      mode))
-         (mode-string (if (eq mode-name (symbol-name major-mode))
-                          "Major Mode Bindings:"
-                        (format "`%s' Minor Mode Bindings:" mode-name))))
-    mode-string))
+                      mode)))
+         (if (string= mode-name (symbol-name major-mode))
+                          (format "^\\(?:`%s' \\)?Major Mode Bindings:$" (regexp-quote mode-name))
+                        (format "^`%s' Minor Mode Bindings:$" (regexp-quote mode-name)))))
 
 (defun dmm/mode-has-bindings-p (mode &optional buffer)
   "Returns t if MODE has bindings defined in BUFFER.
