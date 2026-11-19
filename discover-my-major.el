@@ -3,10 +3,11 @@
 ;; Copyright (C) 2026, Steckerhalter
 
 ;; Author: steckerhalter
-;; Package-Origin: (discover-my-major :url "https://framagit.org/steckerhalter/discover-my-major")
+;; Version: 1.1
+;; Package-Origin: (discover-my-major :url "https://github.com/steckerhalter/discover-my-major")
 ;; Package-Requires: ((makey "0.2"))
 ;; Package-Requires-Origins: ((makey :url "https://github.com/mickeynp/makey"))
-;; URL: https://framagit.org/steckerhalter/discover-my-major
+;; URL: https://github.com/steckerhalter/discover-my-major
 ;; Keywords: discover help major-mode keys
 
 ;; This file is not part of GNU Emacs.
